@@ -1,0 +1,22 @@
+<%= form_with(model: @blog, local: true, url: choose_new_or_edit) do |form| %>
+<!-- (model: Blog.new)=(引数) -->
+  <% if @blog.errors.any? %>
+    <div id="error_explanation">
+      <% @blog.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="blog_title">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div class="blog_content">
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+  </div>
+  <%= form.submit %>
+<% end %>
+
+<%= link_to "ブログ一覧画面にもどる", blogs_path %>
